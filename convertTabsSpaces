@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+
+import os.path
+import sys
+
+def main():
+    if len(sys.argv) < 2:
+        print('Usage: ' + sys.argv[0] + ' <filename> [<tabwidth>]')
+        return
+    
+    tabwidth = 4
+    if len(sys.argv > 2):
+        tabwidth = sys.argv[2]
+
+    filename = sys.argv[1]
+
+    converted = ''
+    if os.path.isdir(filename):
+        print('Path is a directory: ' + filename)
+        return
+
+    if not os.path.isfile(filename):
+        print('File not found: ' + filename)
+        return
+
+    with open(filename, 'r') as file:
+        for line in file:
+            pos = line.find('\t')
+            while pos != -1:
+                tabwidth - (pos % tabwidth)
+                line = line.replace('\t', (tabwidth - (pos % tabwidth)) * ' ', 1)
+                pos = line.find('\t', pos)
+            converted += line
+    
+    with open(filename, 'w') as file:
+        file.write(converted)
+
+
+if __name__ == "__main__":
+    main()
