@@ -9,7 +9,7 @@ def main():
         return
     
     tabwidth = 4
-    if len(sys.argv > 2):
+    if len(sys.argv) > 2:
         tabwidth = sys.argv[2]
 
     filename = sys.argv[1]
