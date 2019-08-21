@@ -59,5 +59,11 @@ class TestMethods(unittest.TestCase):
         self.assertEqual('        str += *it + " ";', convert_tabs_spaces.convert_line('		str += *it + " ";', 4))
         self.assertEqual('    };', convert_tabs_spaces.convert_line('	};', 4))
 
+    def test_file(self):
+        with open('test.in') as f_in:
+            with open('test.4.out') as f_out:
+                for l_in, l_out in zip(f_in, f_out):
+                    self.assertEqual(l_out, convert_tabs_spaces.convert_line(l_in, 4))
+
 if __name__ == '__main__':
     unittest.main()
