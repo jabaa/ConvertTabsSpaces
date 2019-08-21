@@ -60,8 +60,8 @@ class TestMethods(unittest.TestCase):
         self.assertEqual('    };', convert_tabs_spaces.convert_line('	};', 4))
 
     def test_file(self):
-        with open('test.in') as f_in:
-            with open('test.4.out') as f_out:
+        with open('test/test.in') as f_in:
+            with open('test/test.4.out') as f_out:
                 for l_in, l_out in zip(f_in, f_out):
                     self.assertEqual(l_out, convert_tabs_spaces.convert_line(l_in, 4))
 
