@@ -51,7 +51,7 @@ def main():
             continue
 
         if not os.path.isfile(current_file_path):
-        #    print('File not found: ' + f, file=sys.stderr)
+            print('File not found: ' + current_file_path, file=sys.stderr)
             continue
 
         converted = ''
@@ -59,8 +59,8 @@ def main():
             for line in current_file:
                 converted += convert_line(line, tabwidth)
         print(converted)
-        # with open(filename, 'w') as file:
-        #     file.write(converted)
+        with open(current_file_path, 'w') as file:
+            file.write(converted)
 
 
 if __name__ == "__main__":
